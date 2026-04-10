@@ -1,0 +1,56 @@
+Explicación del Flujo del Sistema
+6.1 Flujo de Registro de Coach
+
+Coach crea cuenta.
+
+Se almacena usuario.
+
+Se crea entidad Coach.
+
+Puede comenzar a gestionar alumnos.
+
+6.2 Flujo de Login
+
+Usuario ingresa correo y contraseña.
+
+Servicio de autenticación valida credenciales.
+
+Se genera JWT con:
+
+userId
+
+rol
+
+coachId
+
+El cliente recibe token.
+
+6.3 Flujo de Gestión de Alumnos
+
+Coach crea alumno.
+
+Se asocia alumno al coach.
+
+Alumno recibe acceso.
+
+Alumno solo puede ver su información.
+
+6.4 Flujo de Creación y Asignación de Rutina
+
+Coach crea plantilla de rutina.
+
+Asigna rutina a alumno.
+
+Se genera relación AlumnoRutina.
+
+Rutina queda activa.
+
+6.5 Flujo de Registro de Entrenamiento
+
+Alumno consulta rutina activa.
+
+Registra pesos y repeticiones.
+
+Se almacena registro.
+
+Coach puede visualizar progreso.
