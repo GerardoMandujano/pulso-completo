@@ -19,7 +19,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gmr.libs.CorreoService;
 
 import feign.FeignException;
 import feign.Response;
@@ -173,9 +172,8 @@ public class PerfilAlumnoService implements IPerfilAlumno {
             contextVariables.put("nombre", alumno.getNombre()+ " "+ alumno.getApellidop()+" "+alumno.getApellidom());
             contextVariables.put("urlFront", "http://localhost:8085/alumno/cambio-contrasenia/"+token.getToken());
          
-            // Enviar el correo
-            CorreoService.sendEmail("smtp.gmail.com", "587", correOrigen, key, "gerardo.mandujano.itt@gmail.com",
-                    "Creacion de cuenta", "correoCambioContraseña", contextVariables, null);
+            // TODO: Restituir envio real cuando LibCorreo este disponible en Nexus.
+            log.info("Envio de correo omitido en entorno local. Destino: {}", alumno.getCorreo());
             
             alumno.setActivo(true);
 			PerfilAlumno alumnoDb = alumnoRepository.save(alumno);

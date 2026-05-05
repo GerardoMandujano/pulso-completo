@@ -17,37 +17,40 @@ import mx.com.gmr.pulsogym.service.IActividad;
 @RestController
 @RequestMapping("api/v1/actividad")
 public class ActividadController {
-	
+
 	@Autowired
 	IActividad actividadService;
-	
 
-	
 	@GetMapping("/{tipo}/buscar")
 	ResponseGenerico obtenerTodasTipo(@PathVariable("tipo") String tipo) {
-		
+
 		return actividadService.obtenerTodas(tipo);
 	}
-	
+
+	@GetMapping("/todo")
+	ResponseGenerico obtenerTodas() {
+		return actividadService.obtenerTodas("todo");
+	}
+
 	@GetMapping("/{id}")
 	ResponseGenerico obtener(@PathVariable("id") String id) {
-	return actividadService.obtenerId(id);
+		return actividadService.obtenerId(id);
 	}
-	
+
 	@PostMapping("/")
 	ResponseGenerico insertar(@RequestBody Actividad actividad) {
-	return actividadService.registrar(actividad);
+		return actividadService.registrar(actividad);
 	}
-	
+
 	@PutMapping("/")
 	ResponseGenerico actualizar(@RequestBody Actividad actividad) {
-	return actividadService.actualizar(actividad);
+		return actividadService.actualizar(actividad);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	ResponseGenerico eliminar(@PathVariable String id) {
-	return actividadService.eliminar(Integer.parseInt(id));
-	
+		return actividadService.eliminar(Integer.parseInt(id));
+
 	}
 
 }
